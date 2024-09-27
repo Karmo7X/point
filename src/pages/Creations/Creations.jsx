@@ -28,7 +28,7 @@ function Creations() {
 
      useEffect(() => {
        AOS.init({
-         duration: 1000, // Animation duration in milliseconds
+         duration: 500, // Animation duration in milliseconds
        });
      }, []);
      const isActive = () => {

@@ -175,7 +175,7 @@
   text-align: right;
 
   letter-spacing: 0;
-  color: #434343;
+  color: #800080;
   display: flex;
   gap: 12px;
   /* align-items: center; */
@@ -184,7 +184,7 @@
 }
 
 .landing-serv .text p:first-of-type span {
-  color: #561877;
+  color: #800080;
 }
 
 .landing-serv .text p:last-of-type {

@@ -29,7 +29,7 @@ function Employment() {
 
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration in milliseconds
+      duration: 500, // Animation duration in milliseconds
     });
   }, []);
   const isActive = () => {
@@ -190,6 +190,7 @@ function Employment() {
               <p>{t("global.employment.description")}</p>
               {/* <img className="mx-auto" src={employ} alt="" /> */}
             </div>
+            
           </div>
         </Container>
       </div>

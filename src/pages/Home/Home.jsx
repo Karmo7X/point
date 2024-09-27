@@ -85,7 +85,7 @@ function Home() {
   }, []);
   useEffect(() => {
     AOS.init({
-      duration: 1000, // Animation duration in milliseconds
+      duration: 500, // Animation duration in milliseconds
     });
   }, []);
   useEffect(() => {
@@ -124,44 +124,40 @@ function Home() {
     };
   }, []);
 
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(true);
   const [animationComplete, setAnimationComplete] = useState(false);
+ console.log(showOverlay)
+// Handle the initial loading screen
+useEffect(() => {
+  const timer = setTimeout(() => {
+    setShowOverlay(false);  // Hide the overlay after 3 seconds
+    setAnimationComplete(true);  // Mark the animation as complete
+  }, 3000);
 
-  useEffect(() => {
-    // AOS.init({
-    //   duration: 1000, // مدة الأنيميشن بالمللي ثانية
-    // });
+  return () => clearTimeout(timer);  // Clean up timer on unmount
+}, []);
 
-    const handlePageLoad = () => {
-      if (!animationComplete) {
-        setShowOverlay(true);
-        setTimeout(() => {
-          setShowOverlay(false);
-          setAnimationComplete(true);
-        }, 3000); // Adjust the timing as needed
-      }
-    };
-  
-    const handleScroll = () => {
-      if (!animationComplete && window.scrollY >= 0) {
-        setShowOverlay(true);
-        setTimeout(() => {
-          setShowOverlay(false);
-          setAnimationComplete(true);
-        }, 3000); // Adjust the timing as needed
-      }
-    };
-  
-    // Attach load event for page load
-    window.addEventListener("load", handlePageLoad);
-    // Optionally attach scroll event if needed
-    window.addEventListener("scroll", handleScroll);
-  
-    return () => {
-      window.removeEventListener("load", handlePageLoad);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [animationComplete]);
+// Handle the scroll event logic
+// useEffect(() => {
+//   const handleScroll = () => {
+//     if (!animationComplete && window.scrollY > 0) {
+//       setShowOverlay(true);  // Show the overlay when scrolling begins
+//       setTimeout(() => {
+//         setShowOverlay(false);  // Hide the overlay after 3 seconds
+//         setAnimationComplete(true);  // Mark the animation as complete
+//       }, 3000);
+//     }
+//   };
+
+//   // Attach scroll event listener only after the first loading is done
+//   if (!animationComplete) {
+//     window.addEventListener('scroll', handleScroll);
+//   }
+
+//   return () => {
+//     window.removeEventListener('scroll', handleScroll);
+//   };
+// }, [animationComplete]);
   const [dataClients, setDataClients] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -339,11 +335,14 @@ function Home() {
         <img className="animation1" src={Animation1} alt="" />
       </div>
       {/* End Landing */}
-
-      <div className={`point-overlay ${showOverlay ? "show" : ""}`}>
+       {showOverlay && (<>
+       <div className={`point-overlay ${showOverlay === true ? "show":""} `}>
         <img src={paralexx} alt="" />
         {/* <span>POINT</span> */}
       </div>
+       
+       </>)}
+      
 
       {/* start works */}
       <div className="works">

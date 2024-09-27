@@ -125,11 +125,11 @@
 }
 
 .creations-text div span:first-child {
-  color: #434343;
+  color: #800080;
 }
 
 .creations-text div span:last-child {
-  color: #3998FF;
+  color: #800080;
 }
 @media(max-width:768px) {
   .first-gif {
