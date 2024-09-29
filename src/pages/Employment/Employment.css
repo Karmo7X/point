@@ -99,7 +99,7 @@
 }
 
 .employment .em-title span:last-child {
-  color: #434343;
+  color: #800080;
 }
 
 .employment .land p {
@@ -154,7 +154,7 @@
   display: flex;
   align-items: center;
   letter-spacing: 0;
-  color: #434343;
+  color: #800080;
 }
 
 .employ-form input {

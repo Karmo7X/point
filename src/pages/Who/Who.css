@@ -279,7 +279,7 @@
 
 .circle img {
   display: block;
-  width: 50%;
+  width: 80%;
   /* لجعل الصورة تملأ العنصر الدائري بالكامل */
   height: auto;
   /* يحافظ على نسب الصورة */
@@ -333,7 +333,7 @@
   display: flex;
   align-items: center;
   letter-spacing: 0;
-  color: #434343;
+  color: #800080;
 }
 
 .why-point .why-desc .goal,

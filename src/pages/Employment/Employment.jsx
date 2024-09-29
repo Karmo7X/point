@@ -29,7 +29,7 @@ function Employment() {
 
   useEffect(() => {
     AOS.init({
-      duration: 500, // Animation duration in milliseconds
+      duration: 300, // Animation duration in milliseconds
     });
   }, []);
   const isActive = () => {

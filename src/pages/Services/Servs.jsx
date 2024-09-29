@@ -86,7 +86,7 @@ function Servs() {
 console.log(list)
   useEffect(() => {
     AOS.init({
-      duration: 500, // Animation duration in milliseconds
+      duration: 300, // Animation duration in milliseconds
     });
   }, []);
 
