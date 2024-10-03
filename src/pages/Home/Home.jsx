@@ -11,7 +11,7 @@ import { IoCloseSharp } from "react-icons/io5";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import Container from "react-bootstrap/Container";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col , Button, Modal} from "react-bootstrap";
 import big from "../../assets/img/bigImg.png";
 import col4 from "../../assets/img/col-4.png";
 import col8 from "../../assets/img/col-8.png";
@@ -126,7 +126,7 @@ function Home() {
 
   const [showOverlay, setShowOverlay] = useState(true);
   const [animationComplete, setAnimationComplete] = useState(false);
- console.log(showOverlay)
+ //console.log(showOverlay)
 // Handle the initial loading screen
 useEffect(() => {
   const timer = setTimeout(() => {
@@ -162,15 +162,15 @@ useEffect(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(clientsApi()).then((result) => {
-      console.log(result);
+      //console.log(result);
 
       if (result?.payload?.status == 200) {
         setDataClients(result?.payload?.data?.data);
-        console.log(dataClients);
+        //console.log(dataClients);
       }
     });
   }, []);
-  console.log(dataClients);
+  //console.log(dataClients);
   const lang = sessionStorage.getItem("language") || "ar";
   const [servs, setServs] = useState([]);
   useEffect(() => {
@@ -181,7 +181,7 @@ useEffect(() => {
     dispatch(typeApi(dataType)).then((result) => {
       if (result?.payload?.status == 200) {
         setServs(result?.payload?.data?.data);
-        console.log(servs);
+        //console.log(servs);
       }
     });
   }, [lang]);
@@ -206,7 +206,7 @@ useEffect(() => {
     return { ...detail, gradient: color.gradient };
   });
 
-  console.log(mergedArray);
+  //console.log(mergedArray);
 
   const bottomRef = useRef(null);
   const clientsRef = useRef(null);
@@ -230,6 +230,7 @@ useEffect(() => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
    const [portfolio, setPortfolio] = useState([]);
+    console.log(portfolio)
    useEffect(() => {
      let dataType = {
        lang,
@@ -237,8 +238,9 @@ useEffect(() => {
      };
      dispatch(typeApi(dataType)).then((result) => {
        if (result?.payload?.status == 200) {
+         //console.log(result?.payload?.data?.data)
          setPortfolio(result?.payload?.data?.data);
-         console.log(portfolio);
+         
        }
      });
    }, [lang]);
@@ -269,7 +271,42 @@ useEffect(() => {
    }
  }, [location]);
 
+ const [show, setShow] = useState(false);
+ const [selectedItem, setSelectedItem] = useState(null);
+
+ const handleShow = (item) => {
+  //console.log(item)
+   setSelectedItem(item);
+   setShow(true);
+ };
+
+ const handleClose = () => setShow(false);
    
+
+ const closeModal = (event) => {
+  // Close the modal if the user clicks outside the modal content
+  if (event.target.classList.contains('fixed')) {
+    handleClose();
+  }
+};
+
+useEffect(() => {
+  // Add event listener for ESC key to close the modal
+  const handleKeyDown = (event) => {
+    if (event.key === 'Escape') {
+      handleClose();
+    }
+  };
+
+  window.addEventListener('keydown', handleKeyDown);
+
+  // Cleanup the event listener on component unmount
+  return () => {
+    window.removeEventListener('keydown', handleKeyDown);
+  };
+}, [handleClose]);
+
+
   return (
     <>
       {/* Start Header */}
@@ -353,31 +390,48 @@ useEffect(() => {
           </div>
         </div>
         <Container>
-        <Row className="example p-5 ">
-          {/* <Col lg={6} md={6} sm={12}>
-              <div
-                className="im"
-                style={{ height: "488px" }}
-                data-aos="fade-up"
-              >
-                <img src={big} alt="Big" className="big-img" />
-                <div className="desc">
-                  <img src={richy} alt="" />
-                  <span>{t("global.works.conferences")}</span>
-                  <a
-                    href="https://drive.google.com/file/d/1-XQ8YLmEziGAvRfIHALcLcPEZLkrdqSi/view"
-                    target="_blank"
-                  >
-                    {" "}
-                    <img src={play} alt="" />
-                  </a>
-                </div>
-              </div>
-              
-            </Col> */}
-            {/* {portfolio.length == 4 && (
-              <> */}
-            {portfolio.length == 1 && (
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 p-4">
+  {portfolio.length !== 0 ? (
+    portfolio.map((data, idx) => (
+      <div key={idx} className="relative w-full h-[602px] flex items-center justify-center">
+        <button
+          className="w-full h-full flex flex-col items-center justify-center bg-white shadow-lg"
+          onClick={() => handleShow(data)} // Trigger modal
+        >
+          <img src={data?.image} alt="Portfolio Item" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+            <img src={data?.icon} alt="Icon" className="w-[111px]" />
+            <span className="text-2xl mt-2">{data?.title}</span>
+          </div>
+        </button>
+      </div>
+    ))
+  ) : (
+    <div>No portfolio items available</div>
+  )}
+
+  
+  {show && (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="bg-white p-6 rounded shadow-lg w-1/2">
+        <div className="flex justify-between items-center border-b pb-2">
+          <h3 className="text-xl font-bold">{selectedItem?.title || "Modal title"}</h3>
+          <button onClick={handleClose} className="text-gray-600">X</button>
+        </div>
+        <div className="mt-4">
+          {selectedItem?.description || "No content available."}
+        </div>
+        <div className="flex justify-end mt-4">
+          <button onClick={handleClose} className="bg-gray-300 px-4 py-2 rounded mr-2">Close</button>
+          <button className="bg-blue-600 text-white px-4 py-2 rounded">Understood</button>
+        </div>
+      </div>
+    </div>
+  )}
+</div> */}
+<Row className="example p-5 " > 
+
+{portfolio.length == 1 && (
               <>
            
                 <Col lg={6} md={6} sm={12}>
@@ -387,7 +441,9 @@ useEffect(() => {
                       width: "100%",
                       height: "627px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[0])}
                     // data-aos={
                     //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                     // }
@@ -417,7 +473,9 @@ useEffect(() => {
                       width: "100%",
                       height: "627px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[0])}
                     // data-aos={
                     //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                     // }
@@ -441,7 +499,9 @@ useEffect(() => {
                       width: "100%",
                       height: "362px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[1])}
                     // data-aos={
                     //   window.innerWidth <= 768 ? "zoom-in" : "fade-right"
                     // }
@@ -469,7 +529,9 @@ useEffect(() => {
                       width: "100%",
                       height: "627px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[0])}
                     // data-aos={
                     //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                     // }
@@ -491,7 +553,9 @@ useEffect(() => {
                       width: "100%",
                       height: "302px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[2])}
                     // data-aos={
                     //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                     // }
@@ -516,7 +580,9 @@ useEffect(() => {
                       width: "100%",
                       height: "362px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[1])}
                     // data-aos={
                     //   window.innerWidth <= 768 ? "zoom-in" : "fade-right"
                     // }
@@ -538,7 +604,7 @@ useEffect(() => {
             {portfolio.length == 4 && (
               <>
                 <Col lg={6} md={6} sm={12}>
-                  <a href={portfolio[0]?.portfolio_link} target="_blank">
+                 
                     {" "}
                     <div
                       className="im"
@@ -546,7 +612,9 @@ useEffect(() => {
                         width: "100%",
                         height: "627px",
                         marginTop: "10px",
+                        cursor:'pointer'
                       }}
+                      onClick={() => handleShow(portfolio[0])}
                       // data-aos={
                       //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                       // }
@@ -563,15 +631,17 @@ useEffect(() => {
                         </span>
                       </div>
                     </div>
-                  </a>
-                  <a href={portfolio[2]?.portfolio_link} target="_blank">
+                  
+                  
                     {" "}
                     <div
                       style={{
                         width: "100%",
                         height: "302px",
                         marginTop: "10px",
+                        cursor:'pointer'
                       }}
+                      onClick={() => handleShow(portfolio[2])}
                       // data-aos={
                       //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                       // }
@@ -589,17 +659,19 @@ useEffect(() => {
                         </span>
                       </div>
                     </div>
-                  </a>
+                  
                 </Col>
                 <Col lg={6} md={6} sm={12}>
-                  <a href={portfolio[1]?.portfolio_link} target="_blank">
+                  
                     {" "}
                     <div
                       style={{
                         width: "100%",
                         height: "362px",
                         marginTop: "10px",
+                        cursor:'pointer'
                       }}
+                      onClick={() => handleShow(portfolio[1])}
                       data-aos={
                         window.innerWidth <= 768 ? "zoom-in" : "fade-right"
                       }
@@ -615,15 +687,17 @@ useEffect(() => {
                         <span> {portfolio[1]?.title}</span>
                       </div>
                     </div>
-                  </a>
-                  <a href={portfolio[3]?.portfolio_link} target="_blank">
+                  
+                  
                     {" "}
                     <div
                       style={{
                         width: "100%",
                         height: "568px",
                         marginTop: "10px",
+                        cursor:'pointer'
                       }}
+                      onClick={() => handleShow(portfolio[3])}
                       data-aos={
                         window.innerWidth <= 768 ? "zoom-in" : "fade-right"
                       }
@@ -639,7 +713,7 @@ useEffect(() => {
                         <span> {portfolio[3]?.title}</span>
                       </div>
                     </div>
-                  </a>
+                  
                 </Col>
               </>
             )}
@@ -652,7 +726,9 @@ useEffect(() => {
                       width: "100%",
                       height: "627px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[0])}
                     // data-aos={
                     //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                     // }
@@ -674,7 +750,9 @@ useEffect(() => {
                       width: "100%",
                       height: "302px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[2])}
                     // data-aos={
                     //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                     // }
@@ -699,7 +777,9 @@ useEffect(() => {
                       width: "100%",
                       height: "362px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[1])}
                     data-aos={
                       window.innerWidth <= 768 ? "zoom-in" : "fade-right"
                     }
@@ -720,10 +800,12 @@ useEffect(() => {
                       width: "100%",
                       height: "568px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
-                    data-aos={
-                      window.innerWidth <= 768 ? "zoom-in" : "fade-right"
-                    }
+                    onClick={() => handleShow(portfolio[3])}
+                    // data-aos={
+                    //   window.innerWidth <= 768 ? "zoom-in" : "fade-right"
+                    // }
                     className="im"
                   >
                     <img src={portfolio[3]?.image} alt="Col 8" />
@@ -744,7 +826,9 @@ useEffect(() => {
                       width: "100%",
                       height: "627px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[4])}
                     // data-aos={
                     //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                     // }
@@ -773,7 +857,9 @@ useEffect(() => {
                       width: "100%",
                       height: "627px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[0])}
                     // data-aos={
                     //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                     // }
@@ -795,7 +881,9 @@ useEffect(() => {
                       width: "100%",
                       height: "302px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[2])}
                     // data-aos={
                     //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                     // }
@@ -820,7 +908,9 @@ useEffect(() => {
                       width: "100%",
                       height: "362px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[1])}
                     data-aos={
                       window.innerWidth <= 768 ? "zoom-in" : "fade-right"
                     }
@@ -841,10 +931,12 @@ useEffect(() => {
                       width: "100%",
                       height: "568px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
-                    data-aos={
-                      window.innerWidth <= 768 ? "zoom-in" : "fade-right"
-                    }
+                    onClick={() => handleShow(portfolio[3])}
+                    // data-aos={
+                    //   window.innerWidth <= 768 ? "zoom-in" : "fade-right"
+                    // }
                     className="im"
                   >
                     <img src={portfolio[3]?.image} alt="Col 8" />
@@ -865,7 +957,9 @@ useEffect(() => {
                       width: "100%",
                       height: "627px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
+                    onClick={() => handleShow(portfolio[4])}
                     // data-aos={
                     //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                     // }
@@ -889,10 +983,12 @@ useEffect(() => {
                       width: "100%",
                       height: "362px",
                       marginTop: "10px",
+                      cursor:'pointer'
                     }}
-                    data-aos={
-                      window.innerWidth <= 768 ? "zoom-in" : "fade-right"
-                    }
+                    onClick={() => handleShow(portfolio[5])}
+                    // data-aos={
+                    //   window.innerWidth <= 768 ? "zoom-in" : "fade-right"
+                    // }
                     className="im"
                   >
                     <img src={portfolio[5]?.image} alt="Col 8" />
@@ -908,9 +1004,50 @@ useEffect(() => {
                 </Col>
               </>
             )}
-            {/* </>
-            )} */}
-          </Row>
+</Row>
+
+             {show && (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"onClick={closeModal}>
+    <div className="bg-white  rounded shadow-lg w-3/5">
+      {/* <div className="flex justify-between items-center border-b pb-2">
+        <h2 className="text-lg font-bold">NOW IS THE TIME</h2>
+        <button onClick={handleClose} className="text-gray-600 text-lg font-bold">X</button>
+      </div> */}
+      
+      <div className="">
+        {/* Embed the YouTube video */}
+        <video 
+  width="100%" 
+  height="315" 
+  controls 
+  src={`https://backend.pointksa.net/${selectedItem?.portfolio_link}`} // Ensure this is a valid video URL
+  title="Video player"
+>
+  Your browser does not support the video tag.
+</video>
+
+
+        {/* Add content similar to the modal in the image */}
+        <div className="mt-4 p-5">
+          <h3 className="text-xl font-semibold">{selectedItem?.title || "No title available."} </h3>
+          <p className="mt-2 text-gray-700">
+          {selectedItem?.description || "No content available."}
+           </p>
+          {/* <p className="mt-2 text-gray-700">The video took 1 day to shoot.</p>
+          <p className="mt-2 text-gray-700">Target audience: Alinma audience, as well as credit card users.</p> */}
+        </div>
+        
+        {/* Add the button with relevant text */}
+        {/* <div className="flex justify-end mt-4">
+          <button onClick={handleClose} className="bg-gray-300 px-4 py-2 rounded mr-2">Close</button>
+          <button className="bg-blue-600 text-white px-4 py-2 rounded">Understood</button>
+        </div> */}
+      </div>
+    </div>
+  </div>
+  
+  )}
+
         </Container>
       </div>
       {/* end works */}

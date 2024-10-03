@@ -34,6 +34,7 @@ function Servs() {
   const lang = sessionStorage.getItem("language") || "ar";
   const [list, setList] = useState([]);
   const refs = useRef([]);
+  console.log(list)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -102,21 +103,21 @@ console.log(list)
   }, []);
 
   useEffect(() => {
-    const handleResize = () => {
-      const elements = document.querySelectorAll("[data-aos]");
-      if (window.innerWidth <= 768) {
-        elements.forEach((element) => {
-          element.removeAttribute("data-aos");
-        });
-      } else {
-        elements.forEach((element) => {
-          const dataAosValue = element.getAttribute("data-aos-original");
-          if (dataAosValue) {
-            element.setAttribute("data-aos", dataAosValue);
-          }
-        });
-      }
-    };
+    // const handleResize = () => {
+    //   const elements = document.querySelectorAll("[data-aos]");
+    //   if (window.innerWidth <= 768) {
+    //     elements.forEach((element) => {
+    //       element.removeAttribute("data-aos");
+    //     });
+    //   } else {
+    //     elements.forEach((element) => {
+    //       const dataAosValue = element.getAttribute("data-aos-original");
+    //       if (dataAosValue) {
+    //         element.setAttribute("data-aos", dataAosValue);
+    //       }
+    //     });
+    //   }
+    // };
 
     const saveOriginalDataAos = () => {
       const elements = document.querySelectorAll("[data-aos]");
@@ -127,13 +128,13 @@ console.log(list)
     };
 
     saveOriginalDataAos();
-    window.addEventListener("resize", handleResize);
-    handleResize(); // Run on initial load
+    // window.addEventListener("resize", handleResize);
+    // handleResize(); // Run on initial load
 
     AOS.init();
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      // window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -149,7 +150,7 @@ console.log(list)
                   i === parseInt(index) ? { ...item, isShowen: true } : item
                 )
               );
-            }, 2000);
+            }, 1700);
             observer.unobserve(entry.target);
             return () => clearTimeout(timer);
           }
@@ -243,7 +244,7 @@ console.log(list)
 
       {/* start section */}
       <div className="section mt-5">
-      <Container>
+      <Container >
   {list.map((e, index) => (
     <React.Fragment key={e?.id}>
       <div
@@ -256,7 +257,7 @@ console.log(list)
       >
         <div
           className={`animated-text ${e.isShowen ? "show" : ""}`}
-          data-aos="zoom-in"
+          // data-aos="zoom-in"
           style={{
             width: "50%",
             display: e.isShowen ? "block" : "none",
@@ -277,7 +278,7 @@ console.log(list)
           src={e?.image}
           alt=""
           className={`animated-image ${e.isShowen ? "small" : "big"}`}
-          data-aos={e.isShowen === false ? "zoom-in" : ""}
+          // data-aos={e.isShowen === false ? "zoom-in" : ""}
           ref={(el) => (refs.current[index] = el)}
           data-index={index}
         />

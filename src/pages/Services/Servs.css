@@ -318,11 +318,9 @@
 }
 
 .animated-image {
-  transition: 2s ease-in-out;
+  transition: transform 2.3s ease-in-out; /* Smooth transition for the transform property */
   position: relative;
-  /* Initial position */
-  height: 650px;
-  /* Ensure the image does not exceed its container */
+  max-width: 100%; /* Ensures the image doesn't exceed its container */
 }
 
 .animated-text {
