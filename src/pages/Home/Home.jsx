@@ -1029,9 +1029,17 @@ useEffect(() => {
 
         {/* Add content similar to the modal in the image */}
         <div className="mt-4 p-5">
+          <div className="flex items-center justify-between">
+        <div>
           <h3 className="text-xl font-semibold">{selectedItem?.title || "No title available."} </h3>
-          <p className="mt-2 text-gray-700">
-          {selectedItem?.description || "No content available."}
+        </div>
+        <div>
+          <img src={selectedItem?.icon } style={{ width: "101px" }} alt="" />
+        </div>
+          </div>
+          
+          <p dangerouslySetInnerHTML={{ __html: selectedItem?.description || "No content available." }} className="mt-2 text-gray-700">
+       
            </p>
           {/* <p className="mt-2 text-gray-700">The video took 1 day to shoot.</p>
           <p className="mt-2 text-gray-700">Target audience: Alinma audience, as well as credit card users.</p> */}
