@@ -41,7 +41,7 @@ import { useTranslation } from "react-i18next";
 import Nav from "../../components/NavbarScroll/Nav";
 import { useDispatch } from "react-redux";
 import { clientsApi, typeApi } from "../../Api/slice/ApiGet";
-import paralexx from "../../assets/img/Frame 14.png";
+import paralexx from "../../assets/img/Frame14.png";
 // import paralexx from "../../assets/img/point.png";
 import Top from "../../components/Top/Top";
 function Home() {
@@ -132,7 +132,7 @@ useEffect(() => {
   const timer = setTimeout(() => {
     setShowOverlay(false);  // Hide the overlay after 3 seconds
     setAnimationComplete(true);  // Mark the animation as complete
-  }, 3000);
+  }, 4000);
 
   return () => clearTimeout(timer);  // Clean up timer on unmount
 }, []);
@@ -372,13 +372,21 @@ useEffect(() => {
         <img className="animation1" src={Animation1} alt="" />
       </div>
       {/* End Landing */}
-       {showOverlay && (<>
-       <div className={`point-overlay ${showOverlay === true ? "show":""} `}>
-        <img src={paralexx} alt="" />
-        {/* <span>POINT</span> */}
+      <div className={`point-overlay  ${showOverlay ? "show animate-goUp" : ""}`}>        
+        <div class="container-overlay">
+    <div class="box">
+        <div class="title">
+            <span class="block"></span>
+            <h1>POINT<span></span></h1>
+        </div>
+        <div class="role">
+            <div class="block"></div>
+            <p></p>
+        </div>
+
+    </div>
+</div>
       </div>
-       
-       </>)}
       
 
       {/* start works */}
@@ -604,13 +612,14 @@ useEffect(() => {
             {portfolio.length == 4 && (
               <>
                 <Col lg={6} md={6} sm={12}>
-                 
-                    {" "}
+                   
+                   <div className="flex items-center flex-col ">
+                     {" "}
                     <div
                       className="im"
                       style={{
                         width: "100%",
-                        height: "627px",
+                        // height: "627px",
                         marginTop: "10px",
                         cursor:'pointer'
                       }}
@@ -637,7 +646,7 @@ useEffect(() => {
                     <div
                       style={{
                         width: "100%",
-                        height: "302px",
+                        // height: "302px",
                         marginTop: "10px",
                         cursor:'pointer'
                       }}
@@ -660,6 +669,8 @@ useEffect(() => {
                       </div>
                     </div>
                   
+                   </div>
+                   
                 </Col>
                 <Col lg={6} md={6} sm={12}>
                   
@@ -667,7 +678,7 @@ useEffect(() => {
                     <div
                       style={{
                         width: "100%",
-                        height: "362px",
+                        // height: "362px",
                         marginTop: "10px",
                         cursor:'pointer'
                       }}
@@ -693,7 +704,7 @@ useEffect(() => {
                     <div
                       style={{
                         width: "100%",
-                        height: "568px",
+                        // height: "568px",
                         marginTop: "10px",
                         cursor:'pointer'
                       }}
@@ -1039,7 +1050,7 @@ useEffect(() => {
           </div>
           
           <p dangerouslySetInnerHTML={{ __html: selectedItem?.description || "No content available." }} className="mt-2 text-gray-700">
-       
+          
            </p>
           {/* <p className="mt-2 text-gray-700">The video took 1 day to shoot.</p>
           <p className="mt-2 text-gray-700">Target audience: Alinma audience, as well as credit card users.</p> */}
@@ -1228,7 +1239,7 @@ useEffect(() => {
               // عندما يكون العرض 640 بكسل أو أكثر
               100: {
                 slidesPerView: 2,
-                spaceBetween: 40,
+                spaceBetween: 10,
               },
               640: {
                 slidesPerView: 2,
@@ -1237,12 +1248,12 @@ useEffect(() => {
               // عندما يكون العرض 768 بكسل أو أكثر
               768: {
                 slidesPerView: 2,
-                spaceBetween: 50,
+                spaceBetween: 20,
               },
               // عندما يكون العرض 1024 بكسل أو أكثر
               1024: {
                 slidesPerView: 2,
-                spaceBetween: 40,
+                spaceBetween: 20,
               },
             }}
           >
@@ -1254,7 +1265,7 @@ useEffect(() => {
                       className="mx-auto d-block "
                       src={img?.logo}
                       alt=""
-                      style={{ width: "100px", height: "80px" }}
+                      style={{ width: "100%", height: "100px" }}
                     />
                   </SwiperSlide>
                 ))}

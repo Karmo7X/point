@@ -143,7 +143,7 @@ function Phil() {
       </div>
       {/* end Phil */}
       {/* start section-phil */}
-      <div className="section-phil mt-5 mb-5 ">
+      <div className="section-phil mt-3 mb-5 ">
         <Container>
           <Row className="philoo d-flex  justify-content-center">
             {phills &&

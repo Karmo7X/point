@@ -11,7 +11,17 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    // rest of the code
+    extend: {
+      keyframes: {
+        goUp: {
+          '0%': { transform: 'translateY(100%)' },
+          '100%': { transform: 'translateY(0%)' },
+        },
+      },
+      animation: {
+        goUp: 'goUp 1s ease-in-out forwards',
+      },
+    },
   },
   plugins: [
     // rest of the code

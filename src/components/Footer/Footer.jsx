@@ -145,7 +145,7 @@ function Footer() {
         <div className="overlay"></div>
         <Container>
           <Row className="conatct d-flex align-items-center ">
-            <Col lg={6} md={12} sm={12} data-aos="fade-left">
+            <Col lg={5} md={12} sm={12} data-aos="fade-left">
               <div className="contact-data">
                 <img src={logo} alt="" srcSet={`${logo} 768w, ${logo} 1200w`} />
                 <div>
@@ -162,9 +162,9 @@ function Footer() {
                 </div>
               </div>
             </Col>
-            <Col lg={6} md={12} sm={12} data-aos="fade-right">
-              <div className="form">
-                <div className="pad">
+            <Col lg={7} md={12} sm={12} data-aos="fade-right">
+              <div className="form  flex items-center justify-center">
+                <div className="pad ">
                   <span>{t("global.success.title")}</span>
                   <div className="linkat">
                     <span
@@ -190,7 +190,7 @@ function Footer() {
                     <div className="row w-100">
                       <div className="col-lg-12 col-md-12 col-sm-12 mt-2">
                      <input              
-                      className='w-100'
+                      className='w-100 '
                       type="text"
                       placeholder={t("global.success.fullNamePlaceholder")}
                       onChange={(e) => setName(e.target.value)}
@@ -272,6 +272,7 @@ function Footer() {
                       <div className="col-lg-12 col-md-12 col-sm-12 mt-2">
                       <textarea
                       rows={7}
+                      style={{resize:"none"}}
                       className='w-100'
                       placeholder={t(
                         "global.success.optionalMessagePlaceholder"
@@ -311,9 +312,12 @@ function Footer() {
                         {t("global.success.successMessage")}
                       </span>
                     )}
-                    <button className="send" onClick={handleContact}>
+                    <div className='flex items-center justify-end'>
+                     <button className="send" onClick={handleContact}>
                       {t("global.success.sendButton")}
-                    </button>
+                    </button> 
+                    </div>
+                    
                   </form>
                 </div>
               </div>

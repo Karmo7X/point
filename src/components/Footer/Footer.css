@@ -54,35 +54,35 @@
 .conatct .contact-data div span:first-of-type {
 
   border-radius: 50%;
-  padding: 15px;
+  padding: 10px;
   background: rgba(237, 248, 252, 0.2);
 }
 
 .conatct .contact-data div span:last-of-type {
   font-family: "IBM Plex Sans Arabic", sans-serif;
-  font-size: 30px;
+  font-size: 23px;
   font-weight: bold;
   line-height: 46.8px;
   letter-spacing: 0;
-
   color: #FFFFFF;
 }
 
 .conatct .contact-data div span:first-of-type .icon {
-  font-size: 30px;
+  font-size: 23px;
+  font-weight: bold;
   color: #FFFFFF;
-  font-weight: 900;
+  
 }
 
 .form {
   border-radius: 5px;
-  width: 100%;
+  /* width: 100%; */
   background-color: rgba(237, 248, 252, 0.2);
 }
 
 .form span {
   font-family: "IBM Plex Sans Arabic", sans-serif;
-  font-size: 30px;
+  font-size: 23px;
   font-weight: 700;
   line-height: 36.46px;
   color: #FFFFFF;
@@ -97,7 +97,7 @@
 
 .form .linkat span {
   font-family: "IBM Plex Sans Arabic", sans-serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
   line-height: 26px;
   color: #FFFFFF;
@@ -132,7 +132,7 @@
 }
 @media(max-width:768px) {
   .conatct .contact-data div span:last-of-type {
-    font-size: 22px;
+    font-size: 15px;
   }
 
   .form .linkat span {
@@ -140,7 +140,24 @@
   }
 
   .conatct .contact-data img {
-    width: 120px;
+    width: 70px;
+  }
+
+  .form form input{
+    height: 40px !important;
+  }
+  .send{
+    padding: 10px 40px !important;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .conatct .contact-data{
+    gap: 3px !important;
+    padding: 0px 10px !important ;
+  }
+  .form {
+    padding: 0px 10px !important; 
   }
 }
 
@@ -173,6 +190,10 @@
   padding: 15px;
 }
 
+.form form input::placeholder ,.form form textarea::placeholder{
+  font-size: 17px;
+}
+
 .form form textarea {
 
   outline: none;
@@ -184,16 +205,16 @@
 .form .pad {
   padding: 20px 30px;
 }
-@media (max-width:992px) {
+/* @media (max-width:992px) {
   .form .pad {
     padding: 10px 20px;
   }
-}
+} */
 
 input::placeholder,
 textarea::placeholder {
   color: #8C8C8C;
-  font-size: 22px;
+  font-size: 17px;
   line-height: 21px;
   font-weight: 400;
   font-family: "IBM Plex Sans Arabic", sans-serif;
@@ -225,7 +246,7 @@ textarea::placeholder {
   }
   @media(max-width:768px) {
     .conatct .contact-data div span:last-of-type {
-      font-size: 22px;
+      font-size: 16px;
     }
 
     .form .pad span {
@@ -237,7 +258,7 @@ textarea::placeholder {
     }
 
     .conatct .contact-data img {
-      width: 120px;
+      width: 70px !important;
     }
 
   }

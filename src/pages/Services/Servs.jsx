@@ -138,37 +138,37 @@ console.log(list)
     };
   }, []);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = entry.target.getAttribute("data-index");
-            const timer = setTimeout(() => {
-              setList((prevList) =>
-                prevList.map((item, i) =>
-                  i === parseInt(index) ? { ...item, isShowen: true } : item
-                )
-              );
-            }, 1700);
-            observer.unobserve(entry.target);
-            return () => clearTimeout(timer);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           const index = entry.target.getAttribute("data-index");
+  //           const timer = setTimeout(() => {
+  //             setList((prevList) =>
+  //               prevList.map((item, i) =>
+  //                 i === parseInt(index) ? { ...item, isShowen: true } : item
+  //               )
+  //             );
+  //           }, 1700);
+  //           observer.unobserve(entry.target);
+  //           return () => clearTimeout(timer);
+  //         }
+  //       });
+  //     },
+  //     { threshold: 0.1 }
+  //   );
   
-    refs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+  //   refs.current.forEach((ref) => {
+  //     if (ref) observer.observe(ref);
+  //   });
   
-    return () => {
-      refs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-    };
-  }, [refs, list]);
+  //   return () => {
+  //     refs.current.forEach((ref) => {
+  //       if (ref) observer.unobserve(ref);
+  //     });
+  //   };
+  // }, [refs, list]);
 
   const { t } = useTranslation();
   const bottomRef = useRef(null);
@@ -244,50 +244,46 @@ console.log(list)
 
       {/* start section */}
       <div className="section mt-5">
-      <Container >
-  {list.map((e, index) => (
-    <React.Fragment key={e?.id}>
-      <div
-        className="all position-relative d-flex align-items-center gap-5"
-        style={{
-          direction: "rtl",
-          width: "100%",
-          marginBottom: "150px",
-        }}
-      >
+  <Container>
+    {list.map((e, index) => (
+      <React.Fragment key={e?.id}>
         <div
-          className={`animated-text ${e.isShowen ? "show" : ""}`}
-          // data-aos="zoom-in"
+          className="all relative flex items-center gap-5 group"
           style={{
-            width: "50%",
-            display: e.isShowen ? "block" : "none",
+            direction: "rtl",
+            width: "100%",
+            marginBottom: "150px",
           }}
         >
-          <div className="descc">
-            <div className="icon" style={{ background: e?.gradient }}>
-              <img src={e?.icon} alt="" />
+          <div
+            className={`animated-text show`}
+            style={{
+              width: "50%",
+              display: "block",
+            }}
+          >
+            <div className="descc">
+              <div className="icon" style={{ background: e?.gradient }}>
+                <img src={e?.icon} alt="" />
+              </div>
+              <span className="titlee">{e?.title}</span>
+              <span
+                className="descp"
+                dangerouslySetInnerHTML={{ __html: e?.description }}
+              />
             </div>
-            <span className="titlee">{e?.title}</span>
-            <span
-              className="descp"
-              dangerouslySetInnerHTML={{ __html: e?.description }}
-            />
           </div>
+          <img
+            src={e?.image}
+            alt=""
+            className="animated-image small transform transition-transform duration-300 group-hover:translate-x-1/4"
+          />
         </div>
-        <img
-          src={e?.image}
-          alt=""
-          className={`animated-image ${e.isShowen ? "small" : "big"}`}
-          // data-aos={e.isShowen === false ? "zoom-in" : ""}
-          ref={(el) => (refs.current[index] = el)}
-          data-index={index}
-        />
-      </div>
-    </React.Fragment>
-  ))}
-</Container>
+      </React.Fragment>
+    ))}
+  </Container>
+</div>
 
-      </div>
       {/* End section */}
       <Top />
       <div ref={bottomRef}>

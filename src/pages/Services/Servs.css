@@ -464,7 +464,9 @@ transition: 2s;
   .all {
     direction: ltr !important;
   }
-
+  .group:hover .animated-image {
+    transform: translateX(-25%);
+  }
   .descp,
   .titlee {
     text-align: left;

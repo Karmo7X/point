@@ -411,9 +411,9 @@
 }
 .im img {
   width: 100%;
-  height: 100%;
+  /* height: 100%;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 100%; */
 
 }
 
@@ -491,11 +491,11 @@
   cursor: pointer;
 }
 @media(max-width:992px) {
-  .im {
+  /* .im {
     width: 100% !important;
     height: 30vh !important;
 
-  }
+  } */
 
   .im .desc {
     gap: 10px;
@@ -643,14 +643,16 @@
   z-index: 9999;
   transition: 1s ease-in-out;
   color: #333;
+ 
 
   /* جعل الكلمة شفافة */
 }
 
+
 .point-overlay.show {
   top: 0;
 
-  /* ينزلق العنصر إلى الأعلى عندما تتم إضافة الفئة show */
+
   animation: scaleDown 2s linear;
 }
 
@@ -665,6 +667,7 @@
 }
 
 
+
 @keyframes scaleDown {
   0% {
     transform: scale(3);
@@ -675,6 +678,8 @@
     /* نسبة التصغير */
   }
 }
+
+
 /* @media(min-width:992px) {
   .slider {
     margin-top: -200px;
@@ -765,3 +770,365 @@
     }
   }
 }
+
+
+
+
+.container-overlay2 {
+  width: 100%;
+  height: 100vh;
+  background: #232323;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .box {
+    width: 450px;
+    height: 370px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .title {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100px;
+
+      .block {
+        width: 0%;
+        height: inherit;
+        background: #ffb510;
+        position: absolute;
+        animation: mainBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
+        display: flex;
+        z-index: 9999;
+      }
+
+      h1 {
+     
+        color: transparent; /* Make the text itself transparent */
+        font-size: 130px;
+        font-weight: bold;
+        background-image: url('../../assets/img/background.jpg'); /* Apply the full image as background */
+        background-size: cover; /* Make sure the image covers the entire text */
+        background-position: center; /* Center the background image */
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent; /* Hide the original text color */
+        -webkit-text-stroke: 1px transparent; /* Remove the stroke if not needed */
+        opacity: 1; /* Show the text */
+        position: relative;
+
+
+        span {
+          width:0px;
+          height: 0px;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+
+          background: #ffb510;
+          -webkit-animation: load 0.6s cubic-bezier(.74, .06, .4, .92) forwards;
+          animation: popIn 0.8s cubic-bezier(.74, .06, .4, .92) forwards;
+          animation-delay: 2s;
+          margin-left: 5px;
+          margin-top: -10px;
+          position: absolute;
+          bottom: 13px;
+          right: -12px;
+
+        }
+      }
+    }
+
+    .role {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 30px;
+      margin-top: 40px;
+
+      .block {
+        width: 0%;
+        height: inherit;
+        background: #e91e63;
+        position: absolute;
+        animation: secBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation-delay: 2s;
+        display: flex;
+      }
+
+      p {
+        animation: secFadeIn 2s forwards;
+        animation-delay: 3.2s;
+        opacity: 0;
+         font-weight: 400;
+        font-family: 'Lato';
+        color: #ffffff;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+      }
+    }
+  }
+}
+
+.container-overlay {
+  width: 100%;
+  height: 100vh;
+  /* background: #232323; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .box {
+    width: 500px;
+    height: 450px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    .title {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100px;
+
+      .block {
+        width: 0%;
+        height: inherit;
+        background: #800080;
+        position: absolute;
+        animation: mainBlock 3s cubic-bezier(.74, .06, .4, .92) forwards;
+        display: flex;
+        z-index: 997;
+      }
+
+      h1 {
+     
+        color: #340748;
+        font-size: 125px;
+        font-weight: bold;
+        -webkit-animation: mainFadeIn 2s forwards;
+        -o-animation: mainFadeIn 2s forwards;
+        animation: mainFadeIn 2s forwards;
+        animation-delay: 1.6s;
+        opacity: 0;
+        display: flex;
+        align-items: baseline;
+        position: relative;
+
+        span {
+          width:0px;
+          height: 0px;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+
+          background: #800080;
+          -webkit-animation: load 0.6s cubic-bezier(.74, .06, .4, .92) forwards;
+          animation: popIn 0.8s cubic-bezier(.74, .06, .4, .92) forwards;
+          animation-delay: 2s;
+          margin-left: 5px;
+          margin-top: -10px;
+          position: absolute;
+          bottom: 13px;
+          right: -12px;
+
+        }
+      }
+    }
+
+    .role {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      height: 30px;
+      margin-top: 40px;
+
+      .block {
+        width: 0%;
+        height: inherit;
+        background: #3998ff;
+        position: absolute;
+        animation: secBlock 2s cubic-bezier(.74, .06, .4, .92) forwards;
+        animation-delay: 2s;
+        display: flex;
+      }
+
+      p {
+        animation: secFadeIn 2s forwards;
+        animation-delay: 3.2s;
+        opacity: 0;
+         font-weight: 400;
+        font-family: 'Lato';
+        color: #ffffff;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 5px;
+      }
+    }
+  }
+  @media (max-width:992px) {
+    .box{
+     width: 200px !important;
+     height: 100px !important;
+    .title {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100px;
+
+      .block {
+        width: 0%;
+        height: inherit;
+        background: #800080;
+        position: absolute;
+        animation: mainBlock 3s cubic-bezier(.74, .06, .4, .92) forwards;
+        display: flex;
+        z-index: 997;
+      }
+
+      h1 {
+     
+        color: #340748;
+        font-size: 60px;
+        font-weight: bold;
+        -webkit-animation: mainFadeIn 2s forwards;
+        -o-animation: mainFadeIn 2s forwards;
+        animation: mainFadeIn 2s forwards;
+        animation-delay: 1.6s;
+        opacity: 0;
+        display: flex;
+        align-items: baseline;
+        position: relative;
+
+        span {
+          width:0px;
+          height: 0px;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          border-radius: 50%;
+
+          background: #800080;
+          -webkit-animation: load 0.6s cubic-bezier(.74, .06, .4, .92) forwards;
+          animation: popIn 0.8s cubic-bezier(.74, .06, .4, .92) forwards;
+          animation-delay: 2s;
+          margin-left: 5px;
+          margin-top: -10px;
+          position: absolute;
+          bottom: 13px;
+          right: -12px;
+
+        }
+      }
+    }
+    }
+  }
+}
+
+
+
+@keyframes mainBlock {
+  0% {
+    width: 0%;
+    left: 0;
+
+  }
+  50% {
+    width: 100%;
+    left: 0;
+
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+
+@keyframes secBlock {
+  0% {
+    width: 0%;
+    left: 0;
+
+  }
+  50% {
+    width: 100%;
+    left: 0;
+
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+
+@keyframes mainFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+@keyframes popIn {
+  0% {
+    width: 0px;
+    height: 0px;
+    background: #800080;
+    border: 0px solid #ddd;
+    opacity: 0;
+  }
+  50% {
+    width: 10px;
+    height: 10px;
+    background: #800080;
+    opacity: 1;
+    bottom: 45px;
+  }
+   65% {
+      width: 20px;
+    height: 20px;
+      bottom: 0px;
+      width: 15px
+   }
+   80% {
+      width: 10px;
+    height: 10px;
+      bottom: 20px
+   }
+  100% {
+    width: 20px;
+    height: 20px;
+    background:#800080;
+    border: 0px solid #222;
+    bottom: 13px;
+
+  }
+}
+
+@keyframes secFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+
