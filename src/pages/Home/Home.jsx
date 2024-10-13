@@ -447,7 +447,7 @@ useEffect(() => {
                     className="im"
                     style={{
                       width: "100%",
-                      height: "627px",
+                      // height: "627px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -479,7 +479,7 @@ useEffect(() => {
                     className="im"
                     style={{
                       width: "100%",
-                      height: "627px",
+                      // height: "627px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -505,7 +505,7 @@ useEffect(() => {
                   <div
                     style={{
                       width: "100%",
-                      height: "362px",
+                      // height: "362px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -535,7 +535,7 @@ useEffect(() => {
                     className="im"
                     style={{
                       width: "100%",
-                      height: "627px",
+                      // height: "627px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -559,7 +559,7 @@ useEffect(() => {
                   <div
                     style={{
                       width: "100%",
-                      height: "302px",
+                      // height: "302px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -586,7 +586,7 @@ useEffect(() => {
                   <div
                     style={{
                       width: "100%",
-                      height: "362px",
+                      // height: "362px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -616,10 +616,10 @@ useEffect(() => {
                    <div className="flex items-center flex-col ">
                      {" "}
                     <div
-                      className="im"
+                      className="im naser_image"
                       style={{
                         width: "100%",
-                        // height: "627px",
+                        //  height: "627px",
                         marginTop: "10px",
                         cursor:'pointer'
                       }}
@@ -628,12 +628,13 @@ useEffect(() => {
                       //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
                       // }
                     >
-                      <img src={portfolio[0]?.image} alt="Col 4" />
+                      <img src={portfolio[0]?.image} alt="Col 4"  />
                       <div className="desc">
                         <img
                           src={portfolio[0]?.icon}
                           alt=""
                           style={{ width: "111px" }}
+                          
                         />
                         <span style={{ fontSize: "30px" }}>
                           {portfolio[0]?.title}
@@ -643,31 +644,7 @@ useEffect(() => {
                   
                   
                     {" "}
-                    <div
-                      style={{
-                        width: "100%",
-                        // height: "302px",
-                        marginTop: "10px",
-                        cursor:'pointer'
-                      }}
-                      onClick={() => handleShow(portfolio[2])}
-                      // data-aos={
-                      //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
-                      // }
-                      className="im"
-                    >
-                      <img src={portfolio[2]?.image} alt="Col 4" />
-                      <div className="desc">
-                        <img
-                          src={portfolio[2]?.icon}
-                          alt=""
-                          style={{ width: "111px" }}
-                        />
-                        <span style={{ fontSize: "30px" }}>
-                          {portfolio[2]?.title}
-                        </span>
-                      </div>
-                    </div>
+                    
                   
                    </div>
                    
@@ -684,7 +661,7 @@ useEffect(() => {
                       }}
                       onClick={() => handleShow(portfolio[1])}
                       data-aos={
-                        window.innerWidth <= 768 ? "zoom-in" : "fade-right"
+                        "fade-right"
                       }
                       className="im"
                     >
@@ -710,7 +687,7 @@ useEffect(() => {
                       }}
                       onClick={() => handleShow(portfolio[3])}
                       data-aos={
-                        window.innerWidth <= 768 ? "zoom-in" : "fade-right"
+                        "fade-right"
                       }
                       className="im"
                     >
@@ -724,7 +701,31 @@ useEffect(() => {
                         <span> {portfolio[3]?.title}</span>
                       </div>
                     </div>
-                  
+                    <div
+                      style={{
+                        width: "100%",
+                        // height: "302px",
+                        marginTop: "10px",
+                        cursor:'pointer'
+                      }}
+                      onClick={() => handleShow(portfolio[2])}
+                      // data-aos={
+                      //   window.innerWidth <= 768 ? "zoom-in" : "fade-left"
+                      // }
+                      className="im"
+                    >
+                      <img src={portfolio[2]?.image} alt="Col 4" />
+                      <div className="desc">
+                        <img
+                          src={portfolio[2]?.icon}
+                          alt=""
+                          style={{ width: "111px" }}
+                        />
+                        <span style={{ fontSize: "30px" }}>
+                          {portfolio[2]?.title}
+                        </span>
+                      </div>
+                    </div>
                 </Col>
               </>
             )}
@@ -735,7 +736,7 @@ useEffect(() => {
                     className="im"
                     style={{
                       width: "100%",
-                      height: "627px",
+                      // height: "627px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -759,7 +760,7 @@ useEffect(() => {
                   <div
                     style={{
                       width: "100%",
-                      height: "302px",
+                      // height: "302px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -786,7 +787,7 @@ useEffect(() => {
                   <div
                     style={{
                       width: "100%",
-                      height: "362px",
+                      // height: "362px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -809,7 +810,7 @@ useEffect(() => {
                   <div
                     style={{
                       width: "100%",
-                      height: "568px",
+                      // height: "568px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -835,7 +836,7 @@ useEffect(() => {
                     className="im"
                     style={{
                       width: "100%",
-                      height: "627px",
+                      // height: "627px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -866,7 +867,7 @@ useEffect(() => {
                     className="im"
                     style={{
                       width: "100%",
-                      height: "627px",
+                      // height: "627px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -890,7 +891,7 @@ useEffect(() => {
                   <div
                     style={{
                       width: "100%",
-                      height: "302px",
+                      // height: "302px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -917,7 +918,7 @@ useEffect(() => {
                   <div
                     style={{
                       width: "100%",
-                      height: "362px",
+                      // height: "362px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -966,7 +967,7 @@ useEffect(() => {
                     className="im"
                     style={{
                       width: "100%",
-                      height: "627px",
+                      // height: "627px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}
@@ -992,7 +993,7 @@ useEffect(() => {
                   <div
                     style={{
                       width: "100%",
-                      height: "362px",
+                      // height: "362px",
                       marginTop: "10px",
                       cursor:'pointer'
                     }}

@@ -179,7 +179,7 @@ function Employment() {
         Class="header3"
         bottom={scrollToBottom}
       />
-      <div className="employment">
+      <div className="employment" style={{minHeight:'100vh'}}>
         <Container>
           <div className="row land">
             <div className="col-12 text-center " data-aos="zoom-in">
@@ -192,22 +192,22 @@ function Employment() {
             </div>
             
           </div>
-        </Container>
-      </div>
-      <div
-        className="employ-form"
-        style={{ marginTop: "250px", marginBottom: "100px" }}
+          <div
+        className="employ-form mt-0"
       >
         <div className="container">
-          <span className="t-form mb-4" data-aos="fade-left">
+          <div>
+            <span className="t-form mb-4" data-aos="fade-left">
             {t("global.employment.formTitle")}
-          </span>
+          </span> 
+          </div> 
+         
           <div
-            className="row d"
+            className="row mt-5 d"
             style={{ boxShadow: " 0px 1px 14px 0px rgba(0, 0, 0, 0.25)" }}
             data-aos="zoom-in"
           >
-            <div className="col-12 pt-5 pb-5">
+            <div className="col-12 mt-5" >
               <form
                 action=""
                 style={{
@@ -218,7 +218,7 @@ function Employment() {
                 }}
               >
                 <div
-                  className="row gap-5  d-flex justify-content-center mb-4"
+                  className="row gap-5  d-flex justify-content-center mt-3 mb-4"
                   style={{ width: "100%" }}
                 >
                   <div className="col-lg-3 col-md-10 col-sm-10">
@@ -395,7 +395,7 @@ function Employment() {
                     {t("global.employment.successMessage")}
                   </span>
                 )}
-                <div className="em-btn col-12">
+                <div className="em-btn col-12 mb-5">
                   <button
                     className="em-send"
                     onClick={handleJoin}
@@ -417,11 +417,15 @@ function Employment() {
           </div>
         </div>
       </div>
-      <Top />
-      <div ref={bottomRef}>
+        </Container>
+        <Top />
+      <div className="mt-5" ref={bottomRef}>
         <Footer />
       </div>
       <Done memoDone={memoDone} />
+      </div>
+  
+    
     </>
   );
 }
