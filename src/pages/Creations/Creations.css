@@ -156,12 +156,8 @@
   }
 }
 
-.parent_div{
-  max-width: 940px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
+
+
 @media (max-width:768px) {
   .desktop{
     display: none !important;
@@ -371,4 +367,15 @@
       padding-top: 150px;
     }
   }
+}
+
+
+.screen-container_phone_responsive{
+ 
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
+  top: 0;
+ 
 }

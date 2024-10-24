@@ -139,7 +139,8 @@ const content = [
                   }}
                 />,
     content: (
-      <div className="h-full w-full  flex items-center justify-center text-white">
+      <>
+            <div className="h-full w-full  flex items-center justify-center text-white">
       <img
         src={img1}
         style={{width:'210px',height:"600"}}
@@ -147,7 +148,12 @@ const content = [
         alt="linear board demo"
       />
     </div>
+    
+      </>
+     
+    
     ),
+    
   },
   {
     title: creations[1]?.title,
@@ -188,6 +194,7 @@ const content = [
   },
  
 ];
+
   return (
     <>
       {active === false ? <NavM bottom={scrollToBottom} /> : null}
@@ -250,7 +257,7 @@ const content = [
           
         }}
       >
-         <div className="parent_div   3xl:mt-70   ">
+         <div className=" max-w-[940px] mx-auto hidden md:block lg:block xl:block 2xl:block   3xl:mt-70   ">
         <div className="highlight-container  ">
                 <img
                   src={highlight}
@@ -301,9 +308,61 @@ const content = [
         
           
         </div>
-          <div className="block lg:block xl:block 2xl:block" style={{backgroundColor:'#F5F8FB',height:'50vh'}}></div>
+          <div className="hidden md:block lg:block xl:block 2xl:block " style={{backgroundColor:'#F5F8FB',height:'50vh'}}></div>
 
-      
+          <div className="  block  md:hidden lg:hidden xl:hidden 2xl:hidden     ">
+        <div className="highlight-container  ">
+                <img
+                  src={highlight}
+                  alt="Highlights"
+                  className="highlights-image"
+                />
+                 <div className="div_block-27"></div>
+                    </div>
+                    
+               <div className="div_block gap-11 ">
+                  <div className="right_img">
+                      {content.map((content,idx)=>{
+                    return(<>
+                    
+                     <div key={idx} className="screen-container flex-col ">
+                      
+                         {content.content}
+               
+               
+                        
+
+                    </div>
+                    <div className="screen-container bg-white hidden md:block lg:block xl:block 2xl:block ">
+                   
+                    <div className="content_slide" key={idx}>
+                  <div className="screen-descipt " style={{width:'215px'}}>
+                  <span className="text-2xl font-bold">{content.title}</span>
+                  <span className="text-xl ">{content.description}</span>
+                  </div>
+                
+                 </div>
+                    
+                   
+                 
+                  </div>
+           
+                    </>)
+
+
+                    })}
+                   
+                  </div>
+                
+                  
+               </div>
+                  
+
+       
+        
+          
+        </div>
+          <div className="block  md:hidden lg:hidden xl:hidden 2xl:hidden" style={{backgroundColor:'#F5F8FB',height:'50vh'}}></div>
       </div>
       <Top/>
       <div ref={bottomRef}>
