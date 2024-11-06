@@ -126,7 +126,7 @@ function Home() {
 
   const [showOverlay, setShowOverlay] = useState(true);
   const [animationComplete, setAnimationComplete] = useState(false);
- //console.log(showOverlay)
+ // //console.log(showOverlay)
 // Handle the initial loading screen
 useEffect(() => {
   const timer = setTimeout(() => {
@@ -162,15 +162,15 @@ useEffect(() => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(clientsApi()).then((result) => {
-      //console.log(result);
+      // //console.log(result);
 
       if (result?.payload?.status == 200) {
         setDataClients(result?.payload?.data?.data);
-        //console.log(dataClients);
+        // //console.log(dataClients);
       }
     });
   }, []);
-  //console.log(dataClients);
+  // //console.log(dataClients);
   const lang = sessionStorage.getItem("language") || "ar";
   const [servs, setServs] = useState([]);
   useEffect(() => {
@@ -181,7 +181,7 @@ useEffect(() => {
     dispatch(typeApi(dataType)).then((result) => {
       if (result?.payload?.status == 200) {
         setServs(result?.payload?.data?.data);
-        //console.log(servs);
+        // //console.log(servs);
       }
     });
   }, [lang]);
@@ -206,7 +206,7 @@ useEffect(() => {
     return { ...detail, gradient: color.gradient };
   });
 
-  //console.log(mergedArray);
+  // //console.log(mergedArray);
 
   const bottomRef = useRef(null);
   const clientsRef = useRef(null);
@@ -230,7 +230,7 @@ useEffect(() => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
    const [portfolio, setPortfolio] = useState([]);
-    console.log(portfolio)
+     //console.log(portfolio)
    useEffect(() => {
      let dataType = {
        lang,
@@ -238,7 +238,7 @@ useEffect(() => {
      };
      dispatch(typeApi(dataType)).then((result) => {
        if (result?.payload?.status == 200) {
-         //console.log(result?.payload?.data?.data)
+         // //console.log(result?.payload?.data?.data)
          setPortfolio(result?.payload?.data?.data);
          
        }
@@ -275,7 +275,7 @@ useEffect(() => {
  const [selectedItem, setSelectedItem] = useState(null);
 
  const handleShow = (item) => {
-  //console.log(item)
+  // //console.log(item)
    setSelectedItem(item);
    setShow(true);
  };
@@ -1028,16 +1028,31 @@ useEffect(() => {
       
       <div className="">
         {/* Embed the YouTube video */}
-        <video 
+        {/* <video 
   width="100%" 
   height="315" 
   controls 
-  src={`https://backend.pointksa.net/${selectedItem?.portfolio_link}`} // Ensure this is a valid video URL
+  //src={`https://backend.pointksa.net/${selectedItem?.portfolio_link}`} // Ensure this is a valid video URL
+  src={selectedItem?.portfolio_link}
   title="Video player"
 >
   Your browser does not support the video tag.
-</video>
+</video> */}
 
+{selectedItem?.portfolio_link ? (
+    <iframe
+      width="100%"
+      height="415"
+      // Convert YouTube link to embed format
+      src={selectedItem?.portfolio_link.replace("watch?v=", "embed/")}
+      title="YouTube video player"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+    ></iframe>
+  ) : (
+    <p>Video not available.</p>
+  )}
 
         {/* Add content similar to the modal in the image */}
         <div className="mt-4 p-5">

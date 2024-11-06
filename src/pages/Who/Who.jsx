@@ -214,7 +214,7 @@ function Who() {
                   </div>
                   <span
                     className="whyyy"
-                    dangerouslySetInnerHTML={{ __html: who.mission }}
+                    dangerouslySetInnerHTML={{ __html: who?.mission }}
                   />
                 </div>
 
@@ -226,14 +226,14 @@ function Who() {
                   </div>
                   <span
                     className="whyyy"
-                    dangerouslySetInnerHTML={{ __html: who.goal }}
+                    dangerouslySetInnerHTML={{ __html: who?.goal }}
                   />
                 </div>
               </div>
             </Col>
             <Col lg={4} md={12} sm={12}>
               <div className="why-img" data-aos="zoom-in">
-                <img src={whyImg} alt="" />
+                <img src={who?.image} alt="" />
               </div>
             </Col>
           </Row>
